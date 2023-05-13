@@ -120,15 +120,15 @@ char* mystrstr(char* str1, char* str2)
 	{
 		if (str1[i] == str2[0])
 		{
-			for (int j = 0; j < mystrlen(str2); j++)
+			for (int j = 0; j < mystrlen(str2) + 1; j++)
 			{
-				if (str1[i + j] != str2[i])
+				if (str1[i + j] != str2[j] && str2[j] == '\0')
 				{
-					break;
+					char* result = &str1[i];
+					return result;
 				}
 			}
-			char* result = &str1[i];
-			return result;
+			
 		}
 	}
 	return 0;
